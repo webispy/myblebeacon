@@ -5,7 +5,23 @@ compiler:
 sudo: required
 dist: xenial
 
+env:
+  global:
+    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+    #   via the "travis encrypt" command using the project repo's public key
+    - secure: "gnvtnsHy03j8aSLZyiFnySVDvEDtqGzyWOfkrgOAmADjTxabarwxhkuWV1af1KQk0ijEjS2rbFkvAe/wmnandzCxMH+V2s7ViCLgb8AidA3D7Rsrc1FpYvZrbygJQVJR2rcg7eElLVmRvTdoWt9naYljj9MtyqfK6TnKiahhN9Y1hGiqImAoYp6cMQvpjuC5VggQKaR7c+1n3pbfHa24zC8XKLm9/Axyr14SnkUgOyVxx3uZ9ituLuf/kzmeGI6+WQVHwFMjN3BJxyvTCtGAVZHvfhex89O8WsKl2clQan6s5qzhHUj6s4QKVOokeT43lV0vasCM7S+rplK02aZoCXBQVsASqd2GUAOE6jnfhfs/TQuqS2qZHkFISJoUjPnhoUfkNI4PrR24/zSebueDI4aEKi0vy+We8hr2+AwuVAMUSvnA2XCl8KuRMPDs7CBDES6Aq2IbxeWyoVPe6mL5S5xWhM42qPkdm7EryhOB1BYkSnP3GHzioUFGY8D/F5f0lbUDP0eVUXYNOPiImzj54n6K4ORqHD49bfYvmnjuZR/PeernQB1xnDiTT7a/74GlgeNuMxmYvHBOjagfD0ts9BenZr6TxM7HqQdl9VUnOdTVQ2/VSAONRwuXXEdAI3JNDJZwr4TuwQ43cUKBd6+07NsA9IzsGgbn9mCnROztbBY="
+
+before_install:
+  - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
 addons:
+  coverity_scan:
+    project:
+      name: webispy/myblebeacon
+    notification_email: webispy@gmail.com
+    build_command_prepend: "cmake ."
+    build_command: "make"
+    branch_pattern: master
   apt:
     packages:
       - cmake
@@ -14,4 +30,4 @@ addons:
 before_script:
   - cmake .
 script:
-  - cmake --build .
+  - make
