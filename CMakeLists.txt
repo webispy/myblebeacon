@@ -14,7 +14,7 @@ FOREACH(flag ${pkgs_CFLAGS})
   SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} ${flag}")
 ENDFOREACH(flag)
 
-SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Werror -Wall -Wextra -fvisibility=hidden -fPIC -fdata-sections -ffunction-sections -Wl,--gc-sections")
+SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Werror -Wall -Wextra -fvisibility=hidden -fPIC -fdata-sections -ffunction-sections")
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes -Wswitch-default -Wswitch-enum -Wunreachable-code -Wpointer-arith -Waggregate-return")
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-parameter -Wno-missing-field-initializers -Wdeclaration-after-statement -Wmissing-declarations -Wcast-align")
 
