@@ -1,7 +1,5 @@
-<a href="https://scan.coverity.com/projects/webispy-myblebeacon">
-  <img alt="Coverity Scan Build Status"
-       src="https://scan.coverity.com/projects/12578/badge.svg"/>
-</a>
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/12578/badge.svg)](https://scan.coverity.com/projects/webispy-myblebeacon)
+[![Build Status](https://travis-ci.org/webispy/myblebeacon.svg?branch=master)](https://travis-ci.org/webispy/myblebeacon)
 
 # myblebeacon
 Eddystone(https://github.com/google/eddystone) protocol implementation using Bluez DBus API.
