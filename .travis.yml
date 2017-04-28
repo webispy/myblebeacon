@@ -12,6 +12,6 @@ addons:
       - libglib2.0-dev
 
 before_script:
-  - cmake
+  - cmake .
 script:
   - cmake --build .
