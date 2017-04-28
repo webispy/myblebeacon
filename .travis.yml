@@ -1,0 +1,17 @@
+language: c
+compiler:
+  - clang
+  - gcc
+sudo: required
+dist: xenial
+
+addons:
+  apt:
+    packages:
+      - cmake
+      - libglib2.0-dev
+
+before_script:
+  - cmake
+script:
+  - cmake --build .
