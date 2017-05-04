@@ -14,7 +14,7 @@ union frame {
     unsigned char frame_type;
     unsigned char tx_power;
     unsigned char url_scheme;
-    unsigned char url[URL_SIZE]; 
+    unsigned char url[URL_SIZE];
   } __attribute__((packed)) url;
 };
 
@@ -96,7 +96,7 @@ static void dump()
   printf("ASCII: ");
   for (i = 0; i < frame_len; i++) {
     if (isprint(frame.bytes[i]))
-      printf("   %C ", frame.bytes[i]);
+      printf("   %c ", frame.bytes[i]);
     else
       printf("---- ");
   }
@@ -131,7 +131,7 @@ void myb_eddystone_set_url(const char *url)
     frame.url.url[i] = hostname_pos[i];
 
   frame.url.url[i] = value;
- 
+
   if (value > 0)
     frame_len++;
 
@@ -142,6 +142,6 @@ const unsigned char *myb_eddystone_peek_payload(unsigned int *length)
 {
   if (length)
     *length = frame_len;
-    
+
   return frame.bytes;
 }

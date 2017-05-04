@@ -76,12 +76,14 @@ gchar *myb_dbus_get_ble_adapter()
   return adapter;
 }
 
-static void _register_to_bluez_cb(GObject *source_object, GAsyncResult *res, gpointer user_data)
+static void _register_to_bluez_cb(GObject *source_object, GAsyncResult *res,
+    gpointer user_data)
 {
   GVariant *result;
   GError *error = NULL;
 
-  result = g_dbus_connection_call_finish(G_DBUS_CONNECTION(source_object), res, &error);
+  result = g_dbus_connection_call_finish(G_DBUS_CONNECTION(source_object),
+      res, &error);
   if (error) {
     fprintf(stderr, "method call failed. (%s)\n", error->message);
     g_error_free(error);
